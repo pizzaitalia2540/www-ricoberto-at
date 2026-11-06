@@ -180,9 +180,9 @@ const RAW: Raw[] = [
   ["Al forno", "Lasagne al forno", 13.9, "Lasagne mit Bolognese, Béchamelsauce und Käse", "A,C,G,L"],
   ["Al forno", "Gnocchi quattro formaggi al forno", 13.9, "Gnocchi mit vier Käsesorten, mit Parmigiano überbacken", "A,C,G"],
 
-  ["Dolce", "Tiramisù", 6.7, "Hausgemacht, mit Mascarpone und Espresso", "A,C,G"],
+  ["Dolce", "Tiramisù", 6.7, "", "A,C,G"],
   ["Dolce", "Panna cotta", 5.9, "Mit Himbeersauce", "G"],
-  ["Dolce", "Pane della casa alla Nutella", 11.9, "Hausbrot mit Nutella", "A,F,G,H"],
+  ["Dolce", "Pane della casa alla Nutella", 11.9, "", "A,F,G,H"],
 
   ["Getränke", "Coca-Cola / Zero 0,33 l", 2.9, "", ""],
   ["Getränke", "Fanta 0,33 l", 2.9, "", ""],
