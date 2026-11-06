@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Menu, toppings and delivery zones live in `src/data/menu.ts`; restaurant facts in `src/data/restaurant.ts` — single source for UI and order logic.
+- Order/price rules are pure functions in `src/lib/order.ts` with tests in `src/lib/order.test.ts`; components never compute prices themselves.
+- Orders are sent via a prefilled WhatsApp link (no backend); the cart persists only in localStorage, read after hydration.
