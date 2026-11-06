@@ -1,0 +1,116 @@
+import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { Menu as MenuIcon, Phone, ShoppingBag, X } from "lucide-react";
+import logo from "@/assets/logo-ricoberto.jpg";
+import { RESTAURANT } from "@/data/restaurant";
+import { money } from "@/lib/order";
+import { cn } from "@/lib/utils";
+import { useCart } from "./cart-context";
+
+const NAV = [
+  { href: "/#speisekarte", label: "Speisekarte" },
+  { href: "/#ueber-uns", label: "Über uns" },
+  { href: "/#galerie", label: "Galerie" },
+  { href: "/#bewertungen", label: "Bewertungen" },
+  { href: "/#kontakt", label: "Kontakt" },
+];
+
+export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const solid = scrolled || open || !withCart;
+
+  return (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-40 transition-all duration-300",
+        solid
+          ? "border-b border-border bg-background/90 text-foreground backdrop-blur-md"
+          : "bg-transparent text-ink-foreground",
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 md:h-20 md:px-8">
+        <Link to="/" className="flex items-center gap-3" aria-label="Ricoberto 3.0 – Startseite">
+          <span className="flex h-11 w-16 items-center justify-center overflow-hidden rounded-xl bg-paper shadow-soft md:h-12 md:w-20">
+            <img src={logo} alt="Ricoberto 3.0 Logo" className="h-full w-full object-contain p-1" width={1102} height={424} />
+          </span>
+          <span className="leading-tight">
+            <span className="block font-display text-lg font-semibold italic md:text-xl">Ricoberto 3.0</span>
+            <span className="eyebrow block text-[0.6rem] opacity-70">Pizzeria · Trattoria</span>
+          </span>
+        </Link>
+
+        <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
+          {NAV.map((n) => (
+            <a key={n.href} href={n.href} className="opacity-80 transition-opacity hover:opacity-100">
+              {n.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={RESTAURANT.phoneHref}
+            className={cn(
+              "hidden items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors md:inline-flex",
+              solid ? "border-border hover:bg-secondary" : "border-ink-foreground/30 hover:bg-ink-foreground/10",
+            )}
+          >
+            <Phone className="h-4 w-4" /> {RESTAURANT.phoneDisplay}
+          </a>
+          {withCart && <CartButton />}
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full lg:hidden"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? "Menü schließen" : "Menü öffnen"}
+          >
+            {open ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <nav className="border-t border-border bg-background px-5 pb-6 pt-2 lg:hidden">
+          {NAV.map((n) => (
+            <a
+              key={n.href}
+              href={n.href}
+              onClick={() => setOpen(false)}
+              className="block border-b border-border py-3 font-display text-xl"
+            >
+              {n.label}
+            </a>
+          ))}
+          <a href={RESTAURANT.phoneHref} className="mt-4 inline-flex items-center gap-2 font-semibold text-primary">
+            <Phone className="h-4 w-4" /> {RESTAURANT.phoneDisplay}
+          </a>
+        </nav>
+      )}
+    </header>
+  );
+}
+
+function CartButton() {
+  const { count, total, setCartOpen } = useCart();
+  return (
+    <button
+      type="button"
+      onClick={() => setCartOpen(true)}
+      className="inline-flex items-center gap-2 rounded-full bg-ember px-4 py-2 text-sm font-semibold text-ember-foreground shadow-soft transition hover:brightness-110"
+      aria-label={`Warenkorb öffnen, ${count} Artikel`}
+    >
+      <ShoppingBag className="h-4 w-4" />
+      <span className="tabular-nums">{count}</span>
+      {count > 0 && <span className="hidden tabular-nums sm:inline">· {money(total)}</span>}
+    </button>
+  );
+}
