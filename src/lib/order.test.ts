@@ -61,6 +61,6 @@ describe("order rules", () => {
     expect(msg).toContain("1x Margherita (veganer Käse, Rucola)");
     expect(msg).toContain("Bankomat / Karte");
     expect(msg).toContain("Abholung");
-    expect(msg).toMatch(/Gesamtsumme: € 15,70/);
+    expect(msg).toMatch(/Gesamtsumme: €\s15,70/);
   });
 });
