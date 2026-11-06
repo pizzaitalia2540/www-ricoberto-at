@@ -41,8 +41,12 @@ export function MenuSection() {
   }, [grouped]);
 
   useEffect(() => {
-    const chip = chipsRef.current?.querySelector<HTMLElement>(`[data-chip="${active}"]`);
-    chip?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    // Scroll only the chip row horizontally — never the page.
+    const row = chipsRef.current;
+    const chip = row?.querySelector<HTMLElement>(`[data-chip="${active}"]`);
+    if (row && chip) {
+      row.scrollTo({ left: chip.offsetLeft - row.clientWidth / 2 + chip.clientWidth / 2, behavior: "smooth" });
+    }
   }, [active]);
 
   const onAdd = (item: MenuItem) => {
