@@ -1,23 +1,49 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { About } from "@/components/site/About";
+import { CartProvider } from "@/components/site/cart-context";
+import { CheckoutDialog } from "@/components/site/CheckoutDialog";
+import { Hero, Marquee } from "@/components/site/Hero";
+import { MenuSection } from "@/components/site/MenuSection";
+import { MobileCart } from "@/components/site/MobileCart";
+import { Contact, Footer, Gallery, Reviews } from "@/components/site/Sections";
+import { SiteHeader } from "@/components/site/SiteHeader";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "Ricoberto 3.0 – Pizzeria & Trattoria in 1030 Wien";
+const DESC =
+  "Neapolitanische Pizza, hausgemachte Pasta und italienische Klassiker in der Erdbergstraße 101. Jetzt online bestellen – Abholung oder Lieferung nach 1030, 1020 und 1110 Wien.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESC },
+      { property: "og:type", content: "restaurant" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESC },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <CartProvider>
+      <SiteHeader />
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <MenuSection />
+        <Gallery />
+        <Reviews />
+        <Contact />
+      </main>
+      <Footer />
+      <MobileCart />
+      <CheckoutDialog />
+    </CartProvider>
   );
 }
