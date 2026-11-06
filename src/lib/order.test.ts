@@ -28,7 +28,7 @@ describe("order rules", () => {
     let cart = addLine([], id("Funghi"));
     cart = addLine(cart, id("Funghi"));
     expect(cart).toHaveLength(1);
-    expect(cart[0].qty).toBe(2);
+    expect(cart[0]?.qty).toBe(2);
     expect(subtotal(cart)).toBe(25);
   });
 

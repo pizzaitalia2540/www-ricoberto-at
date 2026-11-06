@@ -114,7 +114,7 @@ export function CheckoutDialog() {
                   )}
                 >
                   {missing > 0
-                    ? `Mindestbestellwert für ${form.zip}: ${money(DELIVERY_ZONES[form.zip])} – es fehlen noch ${money(missing)}.`
+                    ? `Mindestbestellwert für ${form.zip}: ${money(DELIVERY_ZONES[form.zip] ?? 0)} – es fehlen noch ${money(missing)}.`
                     : `Mindestbestellwert für ${form.zip} erreicht.`}
                 </p>
               )}

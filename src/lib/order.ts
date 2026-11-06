@@ -75,7 +75,7 @@ export function validateOrder(cart: CartLine[], d: OrderDetails): string | null 
     if (!d.street?.trim() || !d.houseNumber?.trim()) return "Bitte Straße und Hausnummer angeben.";
     const missing = missingForMinimum(cart, d.zip);
     if (missing > 0)
-      return `Der Mindestbestellwert für ${d.zip} beträgt ${money(DELIVERY_ZONES[d.zip])}. Es fehlen noch ${money(missing)}.`;
+      return `Der Mindestbestellwert für ${d.zip} beträgt ${money(DELIVERY_ZONES[d.zip] ?? 0)}. Es fehlen noch ${money(missing)}.`;
   }
   return null;
 }
