@@ -9,13 +9,13 @@ import { cn } from "@/lib/utils";
 import { useCart } from "./cart-context";
 
 const NAV = [
-  { href: "/speisekarte", label: "Speisekarte" },
-  { href: "/lieferung", label: "Lieferung" },
-  { href: "/#ueber-uns", label: "Über uns" },
-  { href: "/#galerie", label: "Galerie" },
-  { href: "/#kontakt", label: "Kontakt" },
-  { href: "/en", label: "EN" },
-];
+  { to: "/speisekarte", hash: "", label: "Speisekarte" },
+  { to: "/lieferung", hash: "", label: "Lieferung" },
+  { to: "/", hash: "ueber-uns", label: "Über uns" },
+  { to: "/", hash: "galerie", label: "Galerie" },
+  { to: "/", hash: "kontakt", label: "Kontakt" },
+  { to: "/en", hash: "", label: "EN" },
+] as const;
 
 export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
@@ -53,9 +53,9 @@ export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
 
         <nav className="hidden items-center gap-4 text-sm font-medium xl:flex">
           {NAV.map((n) => (
-            <a key={n.href} href={n.href} className="opacity-80 transition-opacity hover:opacity-100">
+            <Link key={n.label} to={n.to} hash={n.hash} className="opacity-80 transition-opacity hover:opacity-100">
               {n.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -84,14 +84,15 @@ export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
       {open && (
         <nav className="border-t border-border bg-background px-5 pb-6 pt-2 xl:hidden">
           {NAV.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
+            <Link
+              key={n.label}
+              to={n.to}
+              hash={n.hash}
               onClick={() => setOpen(false)}
               className="block border-b border-border py-3 font-display text-xl"
             >
               {n.label}
-            </a>
+            </Link>
           ))}
           <a href={RESTAURANT.phoneHref} className="mt-4 inline-flex items-center gap-2 font-semibold text-primary">
             <Phone className="h-4 w-4" /> {RESTAURANT.phoneDisplay}
