@@ -1,4 +1,7 @@
-import { ShoppingBag } from "lucide-react";
+import { MapPin, Phone, ShoppingBag } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { RESTAURANT } from "@/data/restaurant";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { money } from "@/lib/order";
 import { useCart } from "./cart-context";
@@ -10,18 +13,11 @@ export function MobileCart() {
 
   return (
     <>
-      {count > 0 && (
-        <button
-          type="button"
-          onClick={() => setCartOpen(true)}
-          className="fixed inset-x-4 bottom-4 z-40 flex items-center justify-between rounded-full bg-ink px-5 py-3.5 text-ink-foreground shadow-lift lg:hidden"
-        >
-          <span className="inline-flex items-center gap-2 font-semibold">
-            <ShoppingBag className="h-4 w-4 text-ember" /> Warenkorb · {count}
-          </span>
-          <span className="font-semibold tabular-nums">{money(total)}</span>
-        </button>
-      )}
+      <nav aria-label="Schnellaktionen" className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-around gap-2 border-t border-border bg-background p-3 shadow-lift lg:hidden">
+        <Button asChild variant="ghost" className="h-12"><a href={RESTAURANT.phoneHref} aria-label="Ricoberto anrufen"><Phone /> Anrufen</a></Button>
+        <Button asChild variant="ghost" className="h-12"><a href={RESTAURANT.mapsUrl} target="_blank" rel="noreferrer" aria-label="Route zu Ricoberto planen"><MapPin /> Route</a></Button>
+        {count > 0 ? <Button variant="pill" className="h-12" onClick={() => setCartOpen(true)} aria-label={`Warenkorb öffnen, ${count} Artikel, ${money(total)}`}><ShoppingBag /> {count} · {money(total)}</Button> : <Button asChild variant="pill" className="h-12"><Link to="/speisekarte"><ShoppingBag /> Bestellen</Link></Button>}
+      </nav>
 
       <Sheet open={cartOpen} onOpenChange={setCartOpen}>
         <SheetContent side="right" className="w-full border-border bg-background p-3 sm:max-w-md">

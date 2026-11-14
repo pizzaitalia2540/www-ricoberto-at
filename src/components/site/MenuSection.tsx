@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Leaf, Plus, Search, Sparkles } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { CATEGORIES, CATEGORY_KICKER, MENU, type Category, type MenuItem } from "@/data/menu";
 import { money } from "@/lib/order";
@@ -143,9 +145,9 @@ export function MenuSection() {
             ))}
             <p className="text-sm text-muted-foreground">
               Buchstaben kennzeichnen Allergene –{" "}
-              <a href="/impressum#allergene" className="font-medium text-primary underline-offset-4 hover:underline">
+              <Link to="/impressum" hash="allergene" className="font-medium text-primary underline-offset-4 hover:underline">
                 Legende ansehen
-              </a>
+              </Link>
               . Alle Preise in Euro inkl. USt.
             </p>
           </div>
@@ -165,11 +167,9 @@ export function MenuSection() {
 
 function ItemCard({ item, onAdd }: { item: MenuItem; onAdd: () => void }) {
   return (
-    <button
+    <article
       type="button"
-      onClick={onAdd}
       className="group relative flex h-full flex-col rounded-2xl border border-border bg-card p-5 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lift"
-      aria-label={`${item.name} hinzufügen`}
     >
       <div className="flex items-start justify-between gap-3">
         <h4 className="font-display text-lg font-medium leading-snug">{item.name}</h4>
@@ -181,10 +181,10 @@ function ItemCard({ item, onAdd }: { item: MenuItem; onAdd: () => void }) {
           {item.allergens && <>Allergene: {item.allergens}</>}
           {item.pizza && <span className="ml-2 text-primary">· anpassbar</span>}
         </span>
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground transition group-hover:bg-primary group-hover:text-primary-foreground">
+        <Button variant="secondary" size="icon" onClick={onAdd} aria-label={`${item.name} hinzufügen`} className="h-11 w-11 shrink-0 rounded-full">
           <Plus className="h-4 w-4" />
-        </span>
+        </Button>
       </div>
-    </button>
+    </article>
   );
 }

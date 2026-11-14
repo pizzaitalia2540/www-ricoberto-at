@@ -186,9 +186,11 @@ export function Footer() {
           </div>
           <div className="space-y-2">
             <p className="eyebrow text-ember">Info</p>
-            <a href="/#speisekarte" className="block hover:text-ember">
+            <Link to="/speisekarte" className="block hover:text-ember">
               Speisekarte
-            </a>
+            </Link>
+            <Link to="/lieferung" className="block hover:text-ember">Lieferung &amp; Abholung</Link>
+            <Link to="/en" className="block hover:text-ember">English</Link>
             <Link to="/impressum" className="block hover:text-ember">
               Impressum &amp; Datenschutz
             </Link>

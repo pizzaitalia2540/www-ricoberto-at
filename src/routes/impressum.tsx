@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { CartProvider } from "@/components/site/cart-context";
-import { Footer } from "@/components/site/Sections";
-import { SiteHeader } from "@/components/site/SiteHeader";
+import { pageHead } from "@/lib/seo";
 import { ALLERGENS } from "@/data/menu";
 import { RESTAURANT } from "@/data/restaurant";
 
@@ -10,16 +8,8 @@ const TITLE = "Impressum, Datenschutz & Allergene – Ricoberto 3.0";
 const DESC = "Offenlegung, Datenschutzerklärung, AGB und Allergen-Kennzeichnung von Ricoberto 3.0, Erdbergstraße 101, 1030 Wien.";
 
 export const Route = createFileRoute("/impressum")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
+  staticData: { sitemap: true },
+  head: () => pageHead("/impressum", TITLE, DESC),
   component: Impressum,
 });
 
@@ -40,8 +30,6 @@ const COMPANY: [string, string][] = [
 
 function Impressum() {
   return (
-    <CartProvider>
-      <SiteHeader withCart={false} />
       <main className="mx-auto max-w-3xl px-5 pb-24 pt-32 md:px-8">
         <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
           <ArrowLeft className="h-4 w-4" /> Zurück zur Startseite
@@ -118,8 +106,6 @@ function Impressum() {
           </ul>
         </Block>
       </main>
-      <Footer />
-    </CartProvider>
   );
 }
 
