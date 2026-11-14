@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { cloneElement, useId, useMemo, useState, type ReactElement } from "react";
 import { Banknote, Bike, Copy, CreditCard, Store } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -167,12 +167,13 @@ export function CheckoutDialog() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children }: { label: string; children: ReactElement<{ id?: string }> }) {
+  const id = useId();
   return (
-    <label className="block space-y-1.5">
-      <span className="text-xs font-semibold text-muted-foreground">{label}</span>
-      {children}
-    </label>
+    <div className="block space-y-1.5">
+      <label htmlFor={id} className="block text-xs font-semibold text-muted-foreground">{label}</label>
+      {cloneElement(children, { id })}
+    </div>
   );
 }
 
@@ -192,7 +193,7 @@ function Segmented({
       <p className="mb-2 text-xs font-semibold text-muted-foreground">{label}</p>
       <div className="grid grid-cols-2 gap-1 rounded-full bg-secondary p-1">
         {options.map((o) => (
-          <button
+          <Button variant="ghost"
             key={o.value}
             type="button"
             onClick={() => onChange(o.value)}
@@ -204,7 +205,7 @@ function Segmented({
           >
             {o.icon}
             {o.label}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

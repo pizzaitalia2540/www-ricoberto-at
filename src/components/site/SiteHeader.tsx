@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import { Menu as MenuIcon, Phone, ShoppingBag, X } from "lucide-react";
 import logo from "@/assets/logo-ricoberto.jpg";
 import { RESTAURANT } from "@/data/restaurant";
@@ -8,16 +9,18 @@ import { cn } from "@/lib/utils";
 import { useCart } from "./cart-context";
 
 const NAV = [
-  { href: "/#speisekarte", label: "Speisekarte" },
-  { href: "/#ueber-uns", label: "Über uns" },
-  { href: "/#galerie", label: "Galerie" },
-  { href: "/#bewertungen", label: "Bewertungen" },
-  { href: "/#kontakt", label: "Kontakt" },
-];
+  { to: "/speisekarte", hash: "", label: "Speisekarte" },
+  { to: "/lieferung", hash: "", label: "Lieferung" },
+  { to: "/", hash: "ueber-uns", label: "Über uns" },
+  { to: "/", hash: "galerie", label: "Galerie" },
+  { to: "/", hash: "kontakt", label: "Kontakt" },
+  { to: "/en", hash: "", label: "EN" },
+] as const;
 
 export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = useLocation({ select: (location) => location.pathname });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -26,7 +29,7 @@ export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const solid = scrolled || open || !withCart;
+  const solid = scrolled || open || !withCart || pathname !== "/";
 
   return (
     <header
@@ -48,11 +51,11 @@ export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
+        <nav className="hidden items-center gap-4 text-sm font-medium xl:flex">
           {NAV.map((n) => (
-            <a key={n.href} href={n.href} className="opacity-80 transition-opacity hover:opacity-100">
+            <Link key={n.label} to={n.to} hash={n.hash} className="opacity-80 transition-opacity hover:opacity-100">
               {n.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -67,28 +70,29 @@ export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
             <Phone className="h-4 w-4" /> {RESTAURANT.phoneDisplay}
           </a>
           {withCart && <CartButton />}
-          <button
+          <Button variant="ghost" size="icon"
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full xl:hidden"
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
           >
             {open ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
-          </button>
+          </Button>
         </div>
       </div>
 
       {open && (
-        <nav className="border-t border-border bg-background px-5 pb-6 pt-2 lg:hidden">
+        <nav className="border-t border-border bg-background px-5 pb-6 pt-2 xl:hidden">
           {NAV.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
+            <Link
+              key={n.label}
+              to={n.to}
+              hash={n.hash}
               onClick={() => setOpen(false)}
               className="block border-b border-border py-3 font-display text-xl"
             >
               {n.label}
-            </a>
+            </Link>
           ))}
           <a href={RESTAURANT.phoneHref} className="mt-4 inline-flex items-center gap-2 font-semibold text-primary">
             <Phone className="h-4 w-4" /> {RESTAURANT.phoneDisplay}
@@ -102,7 +106,7 @@ export function SiteHeader({ withCart = true }: { withCart?: boolean }) {
 function CartButton() {
   const { count, total, setCartOpen } = useCart();
   return (
-    <button
+    <Button variant="hero"
       type="button"
       onClick={() => setCartOpen(true)}
       className="inline-flex items-center gap-2 rounded-full bg-ember px-4 py-2 text-sm font-semibold text-ember-foreground shadow-soft transition hover:brightness-110"
@@ -111,6 +115,6 @@ function CartButton() {
       <ShoppingBag className="h-4 w-4" />
       <span className="tabular-nums">{count}</span>
       {count > 0 && <span className="hidden tabular-nums sm:inline">· {money(total)}</span>}
-    </button>
+    </Button>
   );
 }

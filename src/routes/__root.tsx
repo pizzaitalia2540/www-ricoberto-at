@@ -13,6 +13,11 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { CartProvider } from "@/components/site/cart-context";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { Footer } from "@/components/site/Sections";
+import { MobileCart } from "@/components/site/MobileCart";
+import { CheckoutDialog } from "@/components/site/CheckoutDialog";
 
 function NotFoundComponent() {
   return (
@@ -75,12 +80,12 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ricoberto 3.0 – Pizzeria & Trattoria Wien" },
-      { name: "description", content: "Pizza, Pasta und italienische Klassiker in 1030 Wien." },
+      { property: "og:site_name", content: "Ricoberto 3.0" },
       { name: "theme-color", content: "#2a1d17" },
     ],
     links: [
@@ -123,7 +128,13 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <CartProvider>
+        <SiteHeader />
+        <Outlet />
+        <Footer />
+        <MobileCart />
+        <CheckoutDialog />
+      </CartProvider>
       <Toaster position="top-center" />
     </QueryClientProvider>
   );

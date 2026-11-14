@@ -1,14 +1,20 @@
 # Roadmap – Local SEO (Ricoberto 3.0)
 
-- [ ] Audit current pages (headings, metadata, crawlability, images, a11y)
-- [ ] Keyword research for Vienna (Semrush, AT market)
-- [ ] Cart available on every page (shared across routes)
-- [ ] /speisekarte – crawlable full menu + ordering, Menu JSON-LD
-- [ ] /lieferung – delivery areas 1030/1020/1110, minimums, how to order
-- [ ] /en – English overview page with hreflang
-- [ ] Home: keyword-bearing H1, highlights instead of duplicate full menu, Restaurant JSON-LD
-- [ ] Canonical, og:url, share image (1200x630) on every page
-- [ ] Image compression (hero / gallery), heading + button semantics fix
-- [ ] Mobile quick actions: call / directions / order
-- [ ] QA: SSR HTML check, JSON-LD validation, links, mobile + desktop, ordering flow
-- [ ] Blocked: sitemap.xml + Search Console/GA4 (need published domain + GA4 ID)
+- [x] Continue requested SEO update (SEO2): pages, metadata, sitemap and ordering QA
+
+- [x] Audit current pages (headings, metadata, crawlability, images, a11y)
+- [x] Keyword research for Vienna (Semrush, AT market; completed previously)
+- [x] Cart available on every page (shared across routes)
+- [x] /speisekarte – crawlable full menu + ordering, Menu JSON-LD
+- [x] /lieferung – delivery areas 1030/1020/1110, minimums, how to order
+- [x] /en – English overview page with hreflang
+- [x] Home: keyword-bearing H1, highlights instead of duplicate full menu, Restaurant JSON-LD
+- [x] Canonical and og:url on every public page; root defaults removed
+- [x] Image compression (hero / gallery), heading + button semantics fix
+- [x] Mobile quick actions: call / directions / order
+- [x] QA: SSR HTML, JSON-LD parsing, public pages, mobile + desktop, ordering flow; 13 tests pass
+- [x] Router-derived sitemap.xml lists five public pages; robots.txt references published domain
+- [ ] Search Console connection / Business Profile consistency / Google indexing verification — needs account access
+- [ ] GA4 — needs tracking ID and consent requirements
+- [ ] Genuine restaurant share photos / geographic coordinates — needs verified source; generated photos excluded from JSON-LD and image tags omitted
+- [ ] Publish latest changes — live site retains previous version until publishing

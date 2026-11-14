@@ -34,3 +34,6 @@ use the editor.
 - Menu, toppings and delivery zones live in `src/data/menu.ts`; restaurant facts in `src/data/restaurant.ts` — single source for UI and order logic.
 - Order/price rules are pure functions in `src/lib/order.ts` with tests in `src/lib/order.test.ts`; components never compute prices themselves.
 - Orders are sent via a prefilled WhatsApp link (no backend); the cart persists only in localStorage, read after hydration.
+- Mount the cart and site shell in the root route so orders survive navigation between content pages.
+- Use the shared SEO helper for leaf metadata and data-derived JSON-LD to keep public facts consistent.
+- Derive sitemap URLs from required route staticData.sitemap decisions to keep newly added pages discoverable automatically.

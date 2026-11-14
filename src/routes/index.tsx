@@ -1,49 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { About } from "@/components/site/About";
-import { CartProvider } from "@/components/site/cart-context";
-import { CheckoutDialog } from "@/components/site/CheckoutDialog";
 import { Hero, Marquee } from "@/components/site/Hero";
-import { MenuSection } from "@/components/site/MenuSection";
-import { MobileCart } from "@/components/site/MobileCart";
-import { Contact, Footer, Gallery, Reviews } from "@/components/site/Sections";
-import { SiteHeader } from "@/components/site/SiteHeader";
+import { MenuHighlights } from "@/components/site/MenuHighlights";
+import { Contact, Gallery, Reviews } from "@/components/site/Sections";
+import { pageHead, restaurantSchema, SITE_URL } from "@/lib/seo";
 
 const TITLE = "Ricoberto 3.0 – Pizzeria & Trattoria in 1030 Wien";
 const DESC =
   "Neapolitanische Pizza, hausgemachte Pasta und italienische Klassiker in der Erdbergstraße 101. Jetzt online bestellen – Abholung oder Lieferung nach 1030, 1020 und 1110 Wien.";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESC },
-    ],
+    ...pageHead("/", TITLE, DESC),
+    links: [...pageHead("/", TITLE, DESC).links, { rel: "alternate", hrefLang: "de-AT", href: `${SITE_URL}/` }, { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en` }, { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}/` }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(restaurantSchema) }],
   }),
   component: Index,
 });
 
 function Index() {
   return (
-    <CartProvider>
-      <SiteHeader />
       <main>
         <Hero />
         <Marquee />
         <About />
-        <MenuSection />
+        <MenuHighlights />
         <Gallery />
         <Reviews />
         <Contact />
       </main>
-      <Footer />
-      <MobileCart />
-      <CheckoutDialog />
-    </CartProvider>
   );
 }

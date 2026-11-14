@@ -1,4 +1,5 @@
 import { MapPin, Star } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-pizza.jpg";
 import { Button } from "@/components/ui/button";
 import { RESTAURANT } from "@/data/restaurant";
@@ -21,9 +22,9 @@ export function Hero() {
           <MapPin className="h-3.5 w-3.5 text-ember" /> 1030 Wien · Landstraße
         </p>
         <h1 className="max-w-4xl animate-rise text-5xl font-medium leading-[0.95] sm:text-7xl md:text-8xl [animation-delay:80ms]">
-          Pizza, Pasta
+          Ricoberto 3.0
           <br />
-          <em className="font-normal text-ember">&amp; amore.</em>
+          <em className="text-3xl font-normal text-ember sm:text-5xl">Pizzeria in 1030 Wien.</em>
         </h1>
         <p className="mt-6 max-w-xl animate-rise text-lg leading-relaxed text-ink-foreground/80 [animation-delay:160ms]">
           Willkommen bei Ricoberto 3.0 – neapolitanische Pizza aus dem Ofen, hausgemachte Pasta und herzliche
@@ -31,7 +32,7 @@ export function Hero() {
         </p>
         <div className="mt-9 flex animate-rise flex-wrap gap-3 [animation-delay:240ms]">
           <Button asChild variant="hero" size="xl">
-            <a href="#speisekarte">Jetzt bestellen</a>
+            <Link to="/speisekarte">Jetzt bestellen</Link>
           </Button>
           <Button asChild variant="heroOutline" size="xl">
             <a href={RESTAURANT.phoneHref}>Tisch reservieren</a>
