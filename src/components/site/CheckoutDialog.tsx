@@ -170,10 +170,10 @@ export function CheckoutDialog() {
 function Field({ label, children }: { label: string; children: ReactElement<{ id?: string }> }) {
   const id = useId();
   return (
-    <label htmlFor={id} className="block space-y-1.5">
-      <span className="text-xs font-semibold text-muted-foreground">{label}</span>
+    <div className="block space-y-1.5">
+      <label htmlFor={id} className="block text-xs font-semibold text-muted-foreground">{label}</label>
       {cloneElement(children, { id })}
-    </label>
+    </div>
   );
 }
 
