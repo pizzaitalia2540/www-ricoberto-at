@@ -168,7 +168,6 @@ export function MenuSection() {
 function ItemCard({ item, onAdd }: { item: MenuItem; onAdd: () => void }) {
   return (
     <article
-      type="button"
       className="group relative flex h-full flex-col rounded-2xl border border-border bg-card p-5 text-left shadow-soft transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lift"
     >
       <div className="flex items-start justify-between gap-3">
