@@ -102,27 +102,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     "priceRange": "€€"
   }
 </script>
-    head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { property: "og:site_name", content: "Ricoberto 3.0" },
-      { name: "theme-color", content: "#2a1d17" },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&display=swap",
-      },
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-    ],
-  }),
+   head: () => ({
+  meta: [
+    { charSet: 'utf-8' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { title: 'Pizzeria Ricoberto 3.0 | Online Bestellen in Wien 1030' },
+    {
+      name: 'description',
+      content:
+        'Bestellen Sie authentische neapolitanische Pizza und köstliche italienische Spezialitäten online bei Pizzeria Ricoberto in Wien Landstraße (1030).',
+    },
+  ],
+  scripts: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Restaurant',
+        name: 'Pizzeria Ricoberto 3.0',
+        url: 'https://order.pipapo-ricoberto.com',
+        telephone: '+4366493291372',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Erdbergstraße 101',
+          addressLocality: 'Wien',
+          postalCode: '1030',
+          addressCountry: 'AT',
+        },
+        servesCuisine: 'Pizza, Italian',
+        priceRange: '€€',
+      }),
+    },
+  ],
+}),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
