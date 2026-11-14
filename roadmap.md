@@ -1,5 +1,7 @@
 # Roadmap – Local SEO (Ricoberto 3.0)
 
+- [ ] Continue requested SEO update (SEO2): pages, metadata, sitemap and ordering QA
+
 - [ ] Audit current pages (headings, metadata, crawlability, images, a11y)
 - [ ] Keyword research for Vienna (Semrush, AT market)
 - [ ] Cart available on every page (shared across routes)
