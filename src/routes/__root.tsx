@@ -81,7 +81,28 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   staticData: { sitemap: false },
-  head: () => ({
+  <title>Pizzeria Ricoberto 3.0 | Online Bestellen in Wien 1030</title>
+<meta name="description" content="Bestellen Sie authentische neapolitanische Pizza und köstliche italienische Spezialitäten online bei Pizzeria Ricoberto in Wien Landstraße (1030)." />
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Pizzeria Ricoberto 3.0",
+    "url": "https://order.pipapo-ricoberto.com",
+    "telephone": "+4366493291372",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Erdbergstraße 101",
+      "addressLocality": "Wien",
+      "postalCode": "1030",
+      "addressCountry": "AT"
+    },
+    "servesCuisine": "Pizza, Italian",
+    "priceRange": "€€"
+  }
+</script>
+    head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
