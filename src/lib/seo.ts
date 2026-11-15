@@ -27,9 +27,10 @@ export const restaurantSchema = {
   "@type": "Restaurant",
   "@id": `${SITE_URL}/#restaurant`,
   name: RESTAURANT.name,
-  alternateName: ["Ricoberto Pizza", "Pizzeria Ricoberto", "Ricoberto Wien"],
+  alternateName: ["Ricoberto Pizza", "Pizzeria Ricoberto", "Pizzeria Ricoberto 3.0", "Ricoberto Wien"],
   url: SITE_URL,
   telephone: RESTAURANT.phoneHref.replace("tel:", ""),
+  priceRange: "€€",
   address: {
     "@type": "PostalAddress",
     streetAddress: RESTAURANT.street,
@@ -37,12 +38,28 @@ export const restaurantSchema = {
     addressLocality: "Wien",
     addressCountry: "AT",
   },
-  servesCuisine: ["Italian", "Pizza"],
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 48.1983,
+    longitude: 16.4042,
+  },
+  servesCuisine: ["Italian", "Pizza", "Neapolitan Pizza"],
   hasMenu: `${SITE_URL}/speisekarte`,
-  sameAs: [RESTAURANT.instagramUrl],
+  sameAs: [RESTAURANT.instagramUrl, RESTAURANT.mapsUrl],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: RESTAURANT.rating.replace(",", "."),
+    reviewCount: RESTAURANT.reviewCount.replace(/\D/g, ""),
+    bestRating: "5",
+  },
   openingHoursSpecification: OPENING_HOURS.map((row, index) => {
     const [opens, closes] = row.hours.split(" – ");
-    return { "@type": "OpeningHoursSpecification", dayOfWeek: `https://schema.org/${DAYS[index]}`, opens, closes };
+    return {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: `https://schema.org/${DAYS[index]}`,
+      opens,
+      closes,
+    };
   }),
 };
 
