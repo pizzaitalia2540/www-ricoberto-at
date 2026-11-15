@@ -27,6 +27,7 @@ export const restaurantSchema = {
   "@type": "Restaurant",
   "@id": `${SITE_URL}/#restaurant`,
   name: RESTAURANT.name,
+  alternateName: ["Ricoberto Pizza", "Pizzeria Ricoberto", "Ricoberto Wien"],
   url: SITE_URL,
   telephone: RESTAURANT.phoneHref.replace("tel:", ""),
   address: {
