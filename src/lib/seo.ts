@@ -1,7 +1,7 @@
 import { CATEGORIES, MENU } from "@/data/menu";
 import { OPENING_HOURS, RESTAURANT } from "@/data/restaurant";
 
-export const SITE_URL = "https://ricoberto.lovable.app";
+export const SITE_URL = "https://order.pipapo-ricoberto.com";
 
 export function pageHead(path: string, title: string, description: string) {
   return {
