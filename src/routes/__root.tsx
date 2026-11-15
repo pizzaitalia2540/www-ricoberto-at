@@ -18,6 +18,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { Footer } from "@/components/site/Sections";
 import { MobileCart } from "@/components/site/MobileCart";
 import { CheckoutDialog } from "@/components/site/CheckoutDialog";
+import { restaurantSchema } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -81,60 +82,28 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   staticData: { sitemap: false },
-  <title>Pizzeria Ricoberto 3.0 | Online Bestellen in Wien 1030</title>
-<meta name="description" content="Bestellen Sie authentische neapolitanische Pizza und köstliche italienische Spezialitäten online bei Pizzeria Ricoberto in Wien Landstraße (1030)." />
-
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Pizzeria Ricoberto 3.0",
-    "url": "https://order.pipapo-ricoberto.com",
-    "telephone": "+4366493291372",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Erdbergstraße 101",
-      "addressLocality": "Wien",
-      "postalCode": "1030",
-      "addressCountry": "AT"
-    },
-    "servesCuisine": "Pizza, Italian",
-    "priceRange": "€€"
-  }
-</script>
-   head: () => ({
-  meta: [
-    { charSet: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { title: 'Pizzeria Ricoberto 3.0 | Online Bestellen in Wien 1030' },
-    {
-      name: 'description',
-      content:
-        'Bestellen Sie authentische neapolitanische Pizza und köstliche italienische Spezialitäten online bei Pizzeria Ricoberto in Wien Landstraße (1030).',
-    },
-  ],
-  scripts: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Restaurant',
-        name: 'Pizzeria Ricoberto 3.0',
-        url: 'https://order.pipapo-ricoberto.com',
-        telephone: '+4366493291372',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Erdbergstraße 101',
-          addressLocality: 'Wien',
-          postalCode: '1030',
-          addressCountry: 'AT',
-        },
-        servesCuisine: 'Pizza, Italian',
-        priceRange: '€€',
-      }),
-    },
-  ],
-}),
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Pizzeria Ricoberto 3.0 | Online Bestellen in Wien 1030" },
+      {
+        name: "description",
+        content:
+          "Bestellen Sie authentische neapolitanische Pizza und köstliche italienische Spezialitäten online bei Pizzeria Ricoberto in Wien Landstraße (1030).",
+      },
+    ],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: "https://order.pipapo-ricoberto.com/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(restaurantSchema),
+      },
+    ],
+  }),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -160,7 +129,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <CartProvider>
         <SiteHeader />
         <Outlet />
