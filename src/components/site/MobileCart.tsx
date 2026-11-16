@@ -13,7 +13,7 @@ export function MobileCart() {
 
   return (
     <>
-      <nav aria-label="Schnellaktionen" className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-around gap-2 border-t border-border bg-background p-3 shadow-lift lg:hidden">
+      <nav aria-label="Schnellaktionen" className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-[1fr_1fr_1.4fr] items-center gap-1 border-t border-border bg-background p-2 shadow-lift [&_button]:min-w-0 [&_button]:px-2 [&_a]:min-w-0 [&_a]:px-2 lg:hidden">
         <Button asChild variant="ghost" className="h-12"><a href={RESTAURANT.phoneHref} aria-label="Ricoberto anrufen"><Phone /> Anrufen</a></Button>
         <Button asChild variant="ghost" className="h-12"><a href={RESTAURANT.mapsUrl} target="_blank" rel="noreferrer" aria-label="Route zu Ricoberto planen"><MapPin /> Route</a></Button>
         {count > 0 ? <Button variant="pill" className="h-12" onClick={() => setCartOpen(true)} aria-label={`Warenkorb öffnen, ${count} Artikel, ${money(total)}`}><ShoppingBag /> {count} · {money(total)}</Button> : <Button asChild variant="pill" className="h-12"><Link to="/speisekarte"><ShoppingBag /> Bestellen</Link></Button>}

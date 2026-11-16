@@ -86,16 +86,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Pizzeria Ricoberto 3.0 | Online Bestellen in Wien 1030" },
-      {
-        name: "description",
-        content:
-          "Bestellen Sie authentische neapolitanische Pizza und köstliche italienische Spezialitäten online bei Pizzeria Ricoberto in Wien Landstraße (1030).",
-      },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Ricoberto 3.0" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "canonical", href: "https://order.pipapo-ricoberto.com/" },
     ],
     scripts: [
       {

@@ -21,7 +21,7 @@ export function About() {
             loading="lazy"
           />
           <div className="absolute -bottom-8 -right-4 w-44 rotate-[-4deg] rounded-2xl bg-paper p-4 shadow-lift md:-right-10 md:w-56">
-            <img src={logo} alt="" className="w-full" width={1102} height={424} loading="lazy" />
+            <img src={logo} alt="Logo der Pizzeria Ricoberto 3.0" className="w-full" width={1102} height={424} loading="lazy" />
           </div>
         </div>
 

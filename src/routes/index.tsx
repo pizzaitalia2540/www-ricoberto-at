@@ -3,18 +3,17 @@ import { About } from "@/components/site/About";
 import { Hero, Marquee } from "@/components/site/Hero";
 import { MenuHighlights } from "@/components/site/MenuHighlights";
 import { Contact, Gallery, Reviews } from "@/components/site/Sections";
-import { pageHead, restaurantSchema, SITE_URL } from "@/lib/seo";
+import { pageHead, SITE_URL } from "@/lib/seo";
 
-const TITLE = "Ricoberto 3.0 – Pizzeria & Trattoria in 1030 Wien";
+const TITLE = "Pizzeria Ricoberto 3.0 | Online Bestellen in Wien 1030";
 const DESC =
-  "Neapolitanische Pizza, hausgemachte Pasta und italienische Klassiker in der Erdbergstraße 101. Jetzt online bestellen – Abholung oder Lieferung nach 1030, 1020 und 1110 Wien.";
+  "Bestellen Sie authentische neapolitanische Pizza und köstliche italienische Spezialitäten online bei Pizzeria Ricoberto in Wien Landstraße (1030).";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   head: () => ({
     ...pageHead("/", TITLE, DESC),
     links: [...pageHead("/", TITLE, DESC).links, { rel: "alternate", hrefLang: "de-AT", href: `${SITE_URL}/` }, { rel: "alternate", hrefLang: "en", href: `${SITE_URL}/en` }, { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}/` }],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(restaurantSchema) }],
   }),
   component: Index,
 });

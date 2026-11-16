@@ -1,7 +1,7 @@
 import { CATEGORIES, MENU } from "@/data/menu";
 import { OPENING_HOURS, RESTAURANT } from "@/data/restaurant";
 
-export const SITE_URL = "https://order.pipapo-ricoberto.com";
+export const SITE_URL = "https://www-ricoberto-at.lovable.app";
 
 export function pageHead(path: string, title: string, description: string) {
   return {
@@ -26,7 +26,7 @@ export const restaurantSchema = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "@id": `${SITE_URL}/#restaurant`,
-  name: RESTAURANT.name,
+  name: `Pizzeria ${RESTAURANT.name}`,
   alternateName: ["Ricoberto Pizza", "Pizzeria Ricoberto", "Pizzeria Ricoberto 3.0", "Ricoberto Wien"],
   url: SITE_URL,
   telephone: RESTAURANT.phoneHref.replace("tel:", ""),
