@@ -3,6 +3,16 @@ import { menuSchema, restaurantSchema } from "./seo";
 import { sitemapXML } from "./sitemap";
 
 describe("Public restaurant facts", () => {
+  it("identifies the pizzeria as a Restaurant, a LocalBusiness subtype", () => {
+    expect(restaurantSchema["@type"]).toBe("Restaurant");
+    expect(restaurantSchema.name).toBe("Pizzeria Ricoberto 3.0");
+  });
+  it("publishes the restaurant phone number", () => {
+    expect(restaurantSchema.telephone).toBe("+4366493291372");
+  });
+  it("publishes Pizza and Italian cuisine", () => {
+    expect(restaurantSchema.servesCuisine).toEqual(expect.arrayContaining(["Pizza", "Italian"]));
+  });
   it("publishes the verified Erdbergstraße address", () => {
     expect(restaurantSchema.address.streetAddress).toBe("Erdbergstraße 101");
     expect(restaurantSchema.address.postalCode).toBe("1030");

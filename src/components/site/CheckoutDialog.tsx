@@ -154,10 +154,10 @@ export function CheckoutDialog() {
             <span className="font-display text-2xl font-medium tabular-nums text-primary">{money(total)}</span>
           </div>
           <div className="flex gap-2">
-            <Button variant="whatsapp" size="xl" className="flex-1" onClick={send}>
+            <Button variant="whatsapp" size="xl" className="min-w-0 flex-1" onClick={send}>
               Per WhatsApp senden
             </Button>
-            <Button variant="pillOutline" size="xl" onClick={copy} aria-label="Bestellung kopieren">
+            <Button variant="pillOutline" size="icon" className="h-12 w-12 shrink-0" onClick={copy} aria-label="Bestellung kopieren">
               <Copy />
             </Button>
           </div>
@@ -199,7 +199,7 @@ function Segmented({
             onClick={() => onChange(o.value)}
             aria-pressed={value === o.value}
             className={cn(
-              "inline-flex items-center justify-center gap-2 rounded-full px-3 py-2.5 text-sm font-semibold transition",
+              "inline-flex min-h-11 h-auto min-w-0 items-center justify-center gap-2 rounded-full px-2 py-2.5 text-sm font-semibold transition",
               value === o.value ? "bg-card text-foreground shadow-soft" : "text-muted-foreground hover:text-foreground",
             )}
           >

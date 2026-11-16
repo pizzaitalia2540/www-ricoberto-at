@@ -50,19 +50,19 @@ export function PizzaDialog({ item, onClose }: { item: MenuItem | null; onClose:
                 { v: false, label: "Mozzarella (Standard)", price: 0 },
                 { v: true, label: "Vegane Käse-Alternative", price: VEGAN_CHEESE_PRICE },
               ].map((o) => (
-                <button
+                <Button variant="outline"
                   key={String(o.v)}
                   type="button"
                   onClick={() => setVegan(o.v)}
                   className={cn(
-                    "flex items-center justify-between rounded-xl border px-4 py-3 text-left text-sm transition",
+                    "flex h-auto min-h-11 items-center justify-between gap-3 rounded-xl border px-4 py-3 text-left text-sm transition",
                     vegan === o.v ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card hover:border-primary/40",
                   )}
                   aria-pressed={vegan === o.v}
                 >
                   <span className="font-medium">{o.label}</span>
                   <span className="text-muted-foreground">{o.price ? `+ ${money(o.price)}` : "inklusive"}</span>
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -74,13 +74,13 @@ export function PizzaDialog({ item, onClose }: { item: MenuItem | null; onClose:
                 {group.items.map((t) => {
                   const on = extras.some((e) => e.name === t.name);
                   return (
-                    <button
+                    <Button variant="outline"
                       key={t.name}
                       type="button"
                       onClick={() => toggle(t)}
                       aria-pressed={on}
                       className={cn(
-                        "inline-flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-sm transition",
+                        "inline-flex h-auto min-h-11 items-center gap-1.5 rounded-full border px-3.5 py-2 text-sm transition",
                         on ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card hover:border-primary/40",
                       )}
                     >
@@ -89,7 +89,7 @@ export function PizzaDialog({ item, onClose }: { item: MenuItem | null; onClose:
                       <span className={cn("text-xs", on ? "opacity-80" : "text-muted-foreground")}>
                         {t.price === 0 ? "gratis" : `+${money(t.price)}`}
                       </span>
-                    </button>
+                    </Button>
                   );
                 })}
               </div>

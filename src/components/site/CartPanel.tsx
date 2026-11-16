@@ -46,13 +46,13 @@ export function CartPanel({ className, onCheckout }: { className?: string; onChe
                     <QtyBtn label="Mehr" onClick={() => change(l.key, 1)}>
                       <Plus className="h-3.5 w-3.5" />
                     </QtyBtn>
-                    <button
+                    <Button variant="ghost"
                       type="button"
                       onClick={() => remove(l.key)}
-                      className="ml-auto inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-destructive"
+                      className="ml-auto inline-flex min-h-11 items-center gap-1 text-xs text-muted-foreground hover:text-destructive"
                     >
                       <Trash2 className="h-3.5 w-3.5" /> Entfernen
-                    </button>
+                    </Button>
                   </div>
                 </li>
               );
@@ -97,13 +97,13 @@ export function CartPanel({ className, onCheckout }: { className?: string; onChe
 
 function QtyBtn({ children, onClick, label }: { children: React.ReactNode; onClick: () => void; label: string }) {
   return (
-    <button
+    <Button variant="outline" size="icon"
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-border bg-background hover:border-primary hover:text-primary"
+      className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-background hover:border-primary hover:text-primary"
     >
       {children}
-    </button>
+    </Button>
   );
 }

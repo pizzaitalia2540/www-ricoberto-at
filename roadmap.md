@@ -1,5 +1,7 @@
 # Roadmap – Local SEO (Ricoberto 3.0)
 
+- [x] Requested Vienna homepage metadata, single root Restaurant/LocalBusiness schema, image alt text and mobile ordering controls
+
 - [x] Continue requested SEO update (SEO2): pages, metadata, sitemap and ordering QA
 
 - [x] Audit current pages (headings, metadata, crawlability, images, a11y)
