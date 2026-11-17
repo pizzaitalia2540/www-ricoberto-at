@@ -1,5 +1,8 @@
 # Roadmap – Local SEO (Ricoberto 3.0)
 
+- [x] Professional local SEO: pizza/pasta search content, accurate structured data, local links and verification (18 tests; desktop and mobile pasta ordering checked)
+- [ ] Verify Google indexing and Business Profile connection — no verified Search Console property currently covers the published URL
+
 - [x] Requested Vienna homepage metadata, single root Restaurant/LocalBusiness schema, image alt text and mobile ordering controls
 
 - [x] Continue requested SEO update (SEO2): pages, metadata, sitemap and ordering QA

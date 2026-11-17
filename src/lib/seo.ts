@@ -1,4 +1,4 @@
-import { CATEGORIES, MENU } from "@/data/menu";
+import { CATEGORIES, DELIVERY_ZONES, MENU } from "@/data/menu";
 import { OPENING_HOURS, RESTAURANT } from "@/data/restaurant";
 
 export const SITE_URL = "https://www-ricoberto-at.lovable.app";
@@ -38,20 +38,14 @@ export const restaurantSchema = {
     addressLocality: "Wien",
     addressCountry: "AT",
   },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 48.1983,
-    longitude: 16.4042,
-  },
-  servesCuisine: ["Italian", "Pizza", "Neapolitan Pizza"],
+  servesCuisine: ["Italian", "Pizza", "Pasta", "Neapolitan Pizza"],
+  areaServed: Object.keys(DELIVERY_ZONES).map((postalCode) => ({
+    "@type": "Place",
+    name: `${postalCode} Wien`,
+    address: { "@type": "PostalAddress", postalCode, addressLocality: "Wien", addressCountry: "AT" },
+  })),
   hasMenu: `${SITE_URL}/speisekarte`,
   sameAs: [RESTAURANT.instagramUrl, RESTAURANT.mapsUrl],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: RESTAURANT.rating.replace(",", "."),
-    reviewCount: RESTAURANT.reviewCount.replace(/\D/g, ""),
-    bestRating: "5",
-  },
   openingHoursSpecification: OPENING_HOURS.map((row, index) => {
     const [opens, closes] = row.hours.split(" – ");
     return {

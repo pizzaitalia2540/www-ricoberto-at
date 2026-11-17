@@ -8,7 +8,7 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/lieferung")({
   staticData: { sitemap: true },
-  head: () => pageHead("/lieferung", "Pizza Lieferung Wien 1030, 1020 & 1110 – Ricoberto 3.0", "Pizza und Pasta liefern lassen: Liefergebiete und Mindestbestellwerte für 1030, 1020 und 1110 Wien. Abholung in der Erdbergstraße 101 und Bestellung per WhatsApp."),
+  head: () => pageHead("/lieferung", "Pizza & Pasta Lieferung Wien 1030 | Ricoberto 3.0", "Pizza und Pasta nach Wien 1030 ab 16 €, nach 1020 und 1110 ab 19 €. Abholung in der Erdbergstraße 101 ohne Mindestbestellwert. Per WhatsApp bestellen."),
   component: Lieferung,
 });
 
@@ -16,7 +16,7 @@ function Lieferung() {
   return (
     <main className="mx-auto max-w-5xl px-5 pb-24 pt-32 md:px-8">
       <p className="eyebrow text-primary">Lieferung &amp; Abholung</p>
-      <h1 className="mt-4 text-4xl font-medium md:text-6xl">Ricoberto 3.0 – Pizza Lieferung in Wien</h1>
+      <h1 className="mt-4 text-4xl font-medium md:text-6xl">Ricoberto 3.0 – Pizza &amp; Pasta Lieferung in Wien</h1>
       <p className="mt-6 max-w-3xl text-lg text-muted-foreground">Neapolitanische Pizza, Pasta und italienische Klassiker für zu Hause: Wir liefern nach Landstraße, Leopoldstadt und Simmering.</p>
       <section className="mt-12"><h2 className="flex items-center gap-3 text-3xl"><Bike className="text-primary" /> Unsere Liefergebiete</h2>
         <dl className="mt-6 divide-y divide-border">{Object.entries(DELIVERY_ZONES).map(([zip, minimum]) => <div key={zip} className="flex flex-wrap justify-between gap-3 py-5"><dt className="text-xl">{zip} Wien</dt><dd>Mindestbestellwert {money(minimum)}</dd></div>)}</dl>

@@ -36,4 +36,5 @@ use the editor.
 - Orders are sent via a prefilled WhatsApp link (no backend); the cart persists only in localStorage, read after hydration.
 - Mount the cart and site shell in the root route so orders survive navigation between content pages.
 - Use the shared SEO helper for leaf metadata and data-derived JSON-LD to keep public facts consistent.
+- Keep local food discovery in menu-derived homepage sections linked to the full ordering menu; avoid thin keyword-only pages and unverified coordinates or self-serving rating schema.
 - Derive sitemap URLs from required route staticData.sitemap decisions to keep newly added pages discoverable automatically.

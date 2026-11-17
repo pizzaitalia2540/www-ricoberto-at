@@ -5,7 +5,7 @@ import { menuSchema, pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/speisekarte")({
   staticData: { sitemap: true },
   head: () => ({
-    ...pageHead("/speisekarte", "Speisekarte & Pizza bestellen in 1030 Wien – Ricoberto 3.0", "Alle Gerichte und Preise: neapolitanische Pizza, Pasta, Antipasti und Desserts. Bei Ricoberto 3.0 per WhatsApp zur Abholung oder Lieferung bestellen."),
+    ...pageHead("/speisekarte", "Pizza & Pasta Speisekarte mit Preisen | Ricoberto 3.0 Wien", "Pizza, Pasta, Antipasti und Desserts mit Preisen und Allergenen. Bei Ricoberto 3.0 in 1030 Wien per WhatsApp zur Abholung oder Lieferung bestellen."),
     scripts: [{ type: "application/ld+json", children: JSON.stringify(menuSchema) }],
   }),
   component: Speisekarte,

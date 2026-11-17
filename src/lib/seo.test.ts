@@ -11,7 +11,14 @@ describe("Public restaurant facts", () => {
     expect(restaurantSchema.telephone).toBe("+4366493291372");
   });
   it("publishes Pizza and Italian cuisine", () => {
-    expect(restaurantSchema.servesCuisine).toEqual(expect.arrayContaining(["Pizza", "Italian"]));
+    expect(restaurantSchema.servesCuisine).toEqual(expect.arrayContaining(["Pizza", "Italian", "Pasta"]));
+  });
+  it("publishes only the supported Vienna delivery areas", () => {
+    expect(restaurantSchema.areaServed.map((place) => place.address.postalCode).sort()).toEqual(["1020", "1030", "1110"]);
+  });
+  it("omits unverified coordinates and self-serving review markup", () => {
+    expect(restaurantSchema).not.toHaveProperty("geo");
+    expect(restaurantSchema).not.toHaveProperty("aggregateRating");
   });
   it("publishes the verified Erdbergstraße address", () => {
     expect(restaurantSchema.address.streetAddress).toBe("Erdbergstraße 101");

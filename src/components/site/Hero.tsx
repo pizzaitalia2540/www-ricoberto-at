@@ -24,11 +24,11 @@ export function Hero() {
         <h1 className="max-w-4xl animate-rise text-5xl font-medium leading-[0.95] sm:text-7xl md:text-8xl [animation-delay:80ms]">
           Ricoberto 3.0
           <br />
-          <em className="text-3xl font-normal text-ember sm:text-5xl">Pizzeria in 1030 Wien.</em>
+          <em className="text-3xl font-normal text-ember sm:text-5xl">Pizza &amp; Pasta in 1030 Wien.</em>
         </h1>
         <p className="mt-6 max-w-xl animate-rise text-lg leading-relaxed text-ink-foreground/80 [animation-delay:160ms]">
           Willkommen bei Ricoberto 3.0 – neapolitanische Pizza aus dem Ofen, hausgemachte Pasta und herzliche
-          Gastfreundschaft in der Erdbergstraße.
+          Gastfreundschaft in der Erdbergstraße 101 in Wien Landstraße.
         </p>
         <div className="mt-9 flex animate-rise flex-wrap gap-3 [animation-delay:240ms]">
           <Button asChild variant="hero" size="xl">
