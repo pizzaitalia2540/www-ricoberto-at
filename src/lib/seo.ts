@@ -15,6 +15,10 @@ export function pageHead(path: string, title: string, description: string) {
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}${path}` }],
   };
@@ -44,6 +48,7 @@ export const restaurantSchema = {
     name: `${postalCode} Wien`,
     address: { "@type": "PostalAddress", postalCode, addressLocality: "Wien", addressCountry: "AT" },
   })),
+  image: `${SITE_URL}/og-image.jpg`,
   hasMenu: `${SITE_URL}/speisekarte`,
   sameAs: [RESTAURANT.instagramUrl, RESTAURANT.mapsUrl],
   openingHoursSpecification: OPENING_HOURS.map((row, index) => {
