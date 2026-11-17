@@ -5,9 +5,9 @@ import { MenuHighlights } from "@/components/site/MenuHighlights";
 import { Contact, Gallery, Reviews } from "@/components/site/Sections";
 import { pageHead, SITE_URL } from "@/lib/seo";
 
-const TITLE = "Pizza & Pasta in Wien 1030 bestellen | Ricoberto 3.0";
+const TITLE = "Pizzeria Wien 1030 | Pizza & Pasta bestellen – Ricoberto 3.0";
 const DESC =
-  "Neapolitanische Pizza & italienische Pasta bei Ricoberto 3.0 in Wien Landstraße. Erdbergstraße 101, 1030 Wien: vor Ort genießen, abholen oder liefern lassen.";
+  "Neapolitanische Pizza und italienische Pasta bei Ricoberto 3.0, deiner Pizzeria in Wien-Landstraße (1030). Erdbergstraße 101: vor Ort genießen, Pizza bestellen, abholen oder liefern lassen.";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
