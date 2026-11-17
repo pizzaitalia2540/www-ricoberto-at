@@ -4,7 +4,7 @@ import { OPENING_HOURS, RESTAURANT } from "@/data/restaurant";
 // The verified public website for Ricoberto 3.0. Keep all SEO URLs on this origin.
 export const SITE_URL = "https://pipapo-ricoberto.com";
 
-export function pageHead(path: string, title: string, description: string) {
+export function pageHead(path: string, title: string, description: string, locale = "de_AT") {
   return {
     meta: [
       { title },
@@ -12,6 +12,7 @@ export function pageHead(path: string, title: string, description: string) {
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: locale },
       { property: "og:url", content: `${SITE_URL}${path}` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
@@ -22,6 +23,19 @@ export function pageHead(path: string, title: string, description: string) {
       { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}${path}` }],
+  };
+}
+
+export function breadcrumbSchema(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${SITE_URL}${item.path}`,
+    })),
   };
 }
 
