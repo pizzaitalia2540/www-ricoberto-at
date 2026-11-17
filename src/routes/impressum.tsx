@@ -9,7 +9,13 @@ const DESC = "Offenlegung, Datenschutzerklärung, AGB und Allergen-Kennzeichnung
 
 export const Route = createFileRoute("/impressum")({
   staticData: { sitemap: true },
-  head: () => ({\n    ...pageHead("/impressum", TITLE, DESC),\n    scripts: [{ type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([\n      { name: "Startseite", path: "/" },\n      { name: "Impressum & Rechtliches", path: "/impressum" },\n    ])) }],\n  }),
+  head: () => ({
+    ...pageHead("/impressum", TITLE, DESC),
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([
+      { name: "Startseite", path: "/" },
+      { name: "Impressum & Rechtliches", path: "/impressum" },
+    ])) }],
+  }),
   component: Impressum,
 });
 
