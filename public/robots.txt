@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www-ricoberto-at.lovable.app/sitemap.xml
+Sitemap: https://pipapo-ricoberto.com/sitemap.xml
