@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { pageHead } from "@/lib/seo";
+import { breadcrumbSchema, pageHead } from "@/lib/seo";
 import { ALLERGENS } from "@/data/menu";
 import { RESTAURANT } from "@/data/restaurant";
 
@@ -9,7 +9,7 @@ const DESC = "Offenlegung, Datenschutzerklärung, AGB und Allergen-Kennzeichnung
 
 export const Route = createFileRoute("/impressum")({
   staticData: { sitemap: true },
-  head: () => pageHead("/impressum", TITLE, DESC),
+  head: () => ({\n    ...pageHead("/impressum", TITLE, DESC),\n    scripts: [{ type: "application/ld+json", children: JSON.stringify(breadcrumbSchema([\n      { name: "Startseite", path: "/" },\n      { name: "Impressum & Rechtliches", path: "/impressum" },\n    ])) }],\n  }),
   component: Impressum,
 });
 
