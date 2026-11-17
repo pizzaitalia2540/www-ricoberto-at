@@ -1,7 +1,8 @@
 import { CATEGORIES, DELIVERY_ZONES, MENU } from "@/data/menu";
 import { OPENING_HOURS, RESTAURANT } from "@/data/restaurant";
 
-export const SITE_URL = "https://www-ricoberto-at.lovable.app";
+// The verified public website for Ricoberto 3.0. Keep all SEO URLs on this origin.
+export const SITE_URL = "https://pipapo-ricoberto.com";
 
 export function pageHead(path: string, title: string, description: string) {
   return {
