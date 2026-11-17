@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import interior from "@/assets/trattoria-interior.jpg";
 import logo from "@/assets/logo-ricoberto.jpg";
 
@@ -35,8 +36,19 @@ export function About() {
             hausgemachte Pasta – dazu eine entspannte Atmosphäre und ehrliche Gastfreundschaft.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Ob zur Mittagspause, mit der Familie oder auf ein Glas Wein am Abend: Wir halten den besten Platz für dich
-            bereit. Oder du bestellst bequem zum Abholen oder Liefern.
+            Du suchst eine Pizzeria in Wien 1030? Du findest uns in der Erdbergstraße 101 in Wien-Landstraße.
+            Auf unserer Speisekarte gibt es neapolitanische Pizza, Pasta und italienische Klassiker. Bestelle deine
+            Pizza in Landstraße bequem zur Abholung oder – in unseren Liefergebieten – direkt nach Hause.
+          </p>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Ob zur Mittagspause, mit der Familie oder auf ein Glas Wein am Abend: Wir freuen uns auf deinen Besuch.
+            <Link to="/speisekarte" className="ml-1 text-primary underline-offset-4 hover:underline">
+              Speisekarte ansehen und Pizza bestellen
+            </Link>
+            {" "}oder informiere dich über
+            <Link to="/lieferung" className="ml-1 text-primary underline-offset-4 hover:underline">
+              Lieferung und Abholung in Wien
+            </Link>.
           </p>
           <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-8">
             {FACTS.map((f) => (
