@@ -1,5 +1,5 @@
-import interior from "@/assets/trattoria-interior.jpg";
-import logo from "@/assets/logo-ricoberto.jpg";
+import interior from "@/assets/trattoria-interior.webp";
+import logo from "@/assets/logo-ricoberto.webp";
 
 const FACTS = [
   { value: "4,7★", label: "auf Google" },

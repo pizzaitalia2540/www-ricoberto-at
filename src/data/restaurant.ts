@@ -2,6 +2,7 @@ export const RESTAURANT = {
   name: "Ricoberto 3.0",
   tagline: "Pizzeria · Trattoria",
   street: "Erdbergstraße 101",
+  nearestUbahn: "U3 Kardinal-Nagl-Platz",
   city: "1030 Wien",
   phoneDisplay: "0664 93291372",
   phoneHref: "tel:+4366493291372",

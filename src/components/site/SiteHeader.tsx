@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Menu as MenuIcon, Phone, ShoppingBag, X } from "lucide-react";
-import logo from "@/assets/logo-ricoberto.jpg";
+import logo from "@/assets/logo-ricoberto.webp";
 import { RESTAURANT } from "@/data/restaurant";
 import { money } from "@/lib/order";
 import { cn } from "@/lib/utils";

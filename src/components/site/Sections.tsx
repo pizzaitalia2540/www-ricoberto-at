@@ -1,11 +1,11 @@
 import { Clock, Instagram, MapPin, Phone, Quote, Star } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import burrata from "@/assets/gallery-burrata.jpg";
-import carbonara from "@/assets/gallery-carbonara.jpg";
-import tiramisu from "@/assets/gallery-tiramisu.jpg";
-import antipasti from "@/assets/gallery-antipasti.jpg";
-import hero from "@/assets/hero-pizza.jpg";
-import logo from "@/assets/logo-ricoberto.jpg";
+import burrata from "@/assets/gallery-burrata.webp";
+import carbonara from "@/assets/gallery-carbonara.webp";
+import tiramisu from "@/assets/gallery-tiramisu.webp";
+import antipasti from "@/assets/gallery-antipasti.webp";
+import hero from "@/assets/hero-pizza.webp";
+import logo from "@/assets/logo-ricoberto.webp";
 import { Button } from "@/components/ui/button";
 import { OPENING_HOURS, RESTAURANT, REVIEWS } from "@/data/restaurant";
 

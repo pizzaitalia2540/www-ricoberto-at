@@ -1,6 +1,6 @@
 import { MapPin, Star } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-pizza.jpg";
+import heroImg from "@/assets/hero-pizza.webp";
 import { Button } from "@/components/ui/button";
 import { RESTAURANT } from "@/data/restaurant";
 

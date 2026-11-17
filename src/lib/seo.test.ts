@@ -18,6 +18,11 @@ describe("Public website SEO", () => {
     expect(germanMeta).toContainEqual({ property: "og:url", content: "https://pipapo-ricoberto.com/" });
     expect(germanMeta).toContainEqual({ property: "og:image", content: "https://pipapo-ricoberto.com/og-image.jpg" });
   });
+  it("describes the social preview image for accessibility and link previews", () => {
+    const meta = pageHead("/", "Home", "Description").meta;
+    expect(meta).toContainEqual({ property: "og:image:alt", content: expect.stringContaining("Ricoberto") });
+    expect(meta).toContainEqual({ name: "twitter:image:alt", content: expect.stringContaining("Ricoberto") });
+  });
   it("builds breadcrumb URLs on the official domain", () => {
     expect(breadcrumbSchema([
       { name: "Startseite", path: "/" },
@@ -43,6 +48,10 @@ describe("Public website SEO", () => {
   });
   it("publishes only the supported Vienna delivery areas", () => {
     expect(restaurantSchema.areaServed.map((place) => place.address.postalCode).sort()).toEqual(["1020", "1030", "1110"]);
+  });
+  it("declares accepted payment methods shown on the site", () => {
+    expect(restaurantSchema.paymentAccepted).toContain("Cash");
+    expect(restaurantSchema.paymentAccepted).toContain("Card");
   });
   it("omits unverified coordinates and self-serving review markup", () => {
     expect(restaurantSchema).not.toHaveProperty("geo");

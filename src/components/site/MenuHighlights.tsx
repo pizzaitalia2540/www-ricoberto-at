@@ -4,8 +4,8 @@ import { MENU } from "@/data/menu";
 import { money } from "@/lib/order";
 import { DELIVERY_ZONES, VEGAN_CHEESE_PRICE } from "@/data/menu";
 import { RESTAURANT } from "@/data/restaurant";
-import pizzaImage from "@/assets/gallery-burrata.jpg";
-import pastaImage from "@/assets/gallery-carbonara.jpg";
+import pizzaImage from "@/assets/gallery-burrata.webp";
+import pastaImage from "@/assets/gallery-carbonara.webp";
 
 export function MenuHighlights() {
   const selections = [

@@ -4,6 +4,8 @@ import { OPENING_HOURS, RESTAURANT } from "@/data/restaurant";
 // The verified public website for Ricoberto 3.0. Keep all SEO URLs on this origin.
 export const SITE_URL = "https://pipapo-ricoberto.com";
 
+const OG_IMAGE_ALT = "Neapolitanische Pizza und Pasta bei Ricoberto 3.0 in Wien 1030";
+
 export function pageHead(path: string, title: string, description: string, locale = "de_AT") {
   return {
     meta: [
@@ -21,6 +23,8 @@ export function pageHead(path: string, title: string, description: string, local
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
+      { property: "og:image:alt", content: OG_IMAGE_ALT },
+      { name: "twitter:image:alt", content: OG_IMAGE_ALT },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}${path}` }],
   };
@@ -50,6 +54,7 @@ export const restaurantSchema = {
   url: SITE_URL,
   telephone: RESTAURANT.phoneHref.replace("tel:", ""),
   priceRange: "€€",
+  paymentAccepted: "Cash, Credit Card, Debit Card",
   address: {
     "@type": "PostalAddress",
     streetAddress: RESTAURANT.street,
