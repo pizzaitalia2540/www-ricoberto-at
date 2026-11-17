@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MenuSection } from "@/components/site/MenuSection";
-import { breadcrumbSchema, menuSchema, pageHead, SITE_URL } from "@/lib/seo";
+import { breadcrumbSchema, menuSchema, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/speisekarte")({
   staticData: { sitemap: true },
@@ -18,5 +18,5 @@ export const Route = createFileRoute("/speisekarte")({
 });
 
 function Speisekarte() {
-  return <main className="pt-20"><div className="mx-auto max-w-7xl px-5 pt-12 md:px-8"><h1 className="text-4xl font-medium md:text-6xl">Ricoberto 3.0 – Speisekarte</h1><p className="mt-4 text-lg text-muted-foreground">Pizza &amp; Pasta bestellen in 1030 Wien · Erdbergstraße 101</p><MenuSection /></div></main>;
+  return <main className="pt-20"><div className="mx-auto max-w-7xl px-5 pt-12 md:px-8"><h1 className="text-4xl font-medium md:text-6xl">Ricoberto 3.0 – Speisekarte</h1><p className="mt-4 text-lg text-muted-foreground">Pizza &amp; Pasta bestellen in 1030 Wien · Erdbergstraße 101</p></div><MenuSection /></main>;
 }
