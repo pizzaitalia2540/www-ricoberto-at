@@ -1,11 +1,24 @@
 import { describe, expect, it } from "vitest";
-import { menuSchema, restaurantSchema } from "./seo";
+import { menuSchema, restaurantSchema, SITE_URL, pageHead } from "./seo";
 import { sitemapXML } from "./sitemap";
 
-describe("Public restaurant facts", () => {
+describe("Public website SEO", () => {
+  it("uses the official Ricoberto website as its canonical origin", () => {
+    expect(SITE_URL).toBe("https://pipapo-ricoberto.com");
+    expect(pageHead("/speisekarte", "Menu", "Description").links).toContainEqual({
+      rel: "canonical",
+      href: "https://pipapo-ricoberto.com/speisekarte",
+    });
+  });
+  it("uses the official domain for Open Graph and social preview images", () => {
+    const meta = pageHead("/", "Home", "Description").meta;
+    expect(meta).toContainEqual({ property: "og:url", content: "https://pipapo-ricoberto.com/" });
+    expect(meta).toContainEqual({ property: "og:image", content: "https://pipapo-ricoberto.com/og-image.jpg" });
+  });
   it("identifies the pizzeria as a Restaurant, a LocalBusiness subtype", () => {
     expect(restaurantSchema["@type"]).toBe("Restaurant");
     expect(restaurantSchema.name).toBe("Pizzeria Ricoberto 3.0");
+    expect(restaurantSchema.url).toBe(SITE_URL);
   });
   it("publishes the restaurant phone number", () => {
     expect(restaurantSchema.telephone).toBe("+4366493291372");
