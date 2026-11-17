@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { menuSchema, restaurantSchema, SITE_URL, pageHead } from "./seo";
+import { breadcrumbSchema, menuSchema, restaurantSchema, SITE_URL, pageHead } from "./seo";
 import { sitemapXML } from "./sitemap";
 
 describe("Public website SEO", () => {
@@ -10,10 +10,25 @@ describe("Public website SEO", () => {
       href: "https://pipapo-ricoberto.com/speisekarte",
     });
   });
-  it("uses the official domain for Open Graph and social preview images", () => {
-    const meta = pageHead("/", "Home", "Description").meta;
-    expect(meta).toContainEqual({ property: "og:url", content: "https://pipapo-ricoberto.com/" });
-    expect(meta).toContainEqual({ property: "og:image", content: "https://pipapo-ricoberto.com/og-image.jpg" });
+  it("uses the correct locale and official domain for social metadata", () => {
+    const germanMeta = pageHead("/", "Home", "Description").meta;
+    const englishMeta = pageHead("/en", "Home", "Description", "en_GB").meta;
+    expect(germanMeta).toContainEqual({ property: "og:locale", content: "de_AT" });
+    expect(englishMeta).toContainEqual({ property: "og:locale", content: "en_GB" });
+    expect(germanMeta).toContainEqual({ property: "og:url", content: "https://pipapo-ricoberto.com/" });
+    expect(germanMeta).toContainEqual({ property: "og:image", content: "https://pipapo-ricoberto.com/og-image.jpg" });
+  });
+  it("builds breadcrumb URLs on the official domain", () => {
+    expect(breadcrumbSchema([
+      { name: "Startseite", path: "/" },
+      { name: "Speisekarte", path: "/speisekarte" },
+    ])).toMatchObject({
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { position: 1, name: "Startseite", item: "https://pipapo-ricoberto.com/" },
+        { position: 2, name: "Speisekarte", item: "https://pipapo-ricoberto.com/speisekarte" },
+      ],
+    });
   });
   it("identifies the pizzeria as a Restaurant, a LocalBusiness subtype", () => {
     expect(restaurantSchema["@type"]).toBe("Restaurant");
@@ -45,6 +60,6 @@ describe("Public website SEO", () => {
     expect(pizza?.hasMenuItem.find((item) => item.name === "Margherita")?.offers).toMatchObject({ price: "10.90", priceCurrency: "EUR" });
   });
   it("omits unverified last modification dates", () => {
-    expect(sitemapXML("https://ricoberto.lovable.app", [{ path: "/" }])).not.toContain("lastmod");
+    expect(sitemapXML(SITE_URL, [{ path: "/" }])).not.toContain("lastmod");
   });
 });
