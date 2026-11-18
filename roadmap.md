@@ -21,5 +21,6 @@
 - [x] Router-derived sitemap.xml lists five public pages; robots.txt references published domain
 - [ ] Search Console connection / Business Profile consistency / Google indexing verification — needs account access
 - [ ] GA4 — needs tracking ID and consent requirements
-- [ ] Genuine restaurant share photos / geographic coordinates — needs verified source; generated photos excluded from JSON-LD and image tags omitted
+- [x] Geo coordinates (OSM-verified)
+- [ ] Genuine restaurant share photos — needs verified source; generated photos excluded from JSON-LD and image tags omitted
 - [ ] Publish latest changes — live site retains previous version until publishing

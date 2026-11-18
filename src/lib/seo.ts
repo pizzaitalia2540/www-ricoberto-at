@@ -60,8 +60,13 @@ export const restaurantSchema = {
     streetAddress: RESTAURANT.street,
     postalCode: "1030",
     addressLocality: "Wien",
+    addressRegion: "Wien",
     addressCountry: "AT",
   },
+  // Verified via OpenStreetMap node 12246427283 (restaurant at Erdbergstraße 101).
+  geo: { "@type": "GeoCoordinates", latitude: 48.19669, longitude: 16.40495 },
+  hasMap: RESTAURANT.mapsUrl,
+  containedInPlace: { "@type": "Place", name: "Erdberg, Landstraße, 1030 Wien" },
   servesCuisine: ["Italian", "Pizza", "Pasta", "Neapolitan Pizza"],
   areaServed: Object.keys(DELIVERY_ZONES).map((postalCode) => ({
     "@type": "Place",

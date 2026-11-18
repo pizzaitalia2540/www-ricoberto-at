@@ -53,8 +53,10 @@ describe("Public website SEO", () => {
     expect(restaurantSchema.paymentAccepted).toContain("Cash");
     expect(restaurantSchema.paymentAccepted).toContain("Card");
   });
-  it("omits unverified coordinates and self-serving review markup", () => {
-    expect(restaurantSchema).not.toHaveProperty("geo");
+  it("publishes OSM-verified coordinates for Erdbergstraße 101", () => {
+    expect(restaurantSchema.geo).toEqual({ "@type": "GeoCoordinates", latitude: 48.19669, longitude: 16.40495 });
+  });
+  it("omits self-serving review markup", () => {
     expect(restaurantSchema).not.toHaveProperty("aggregateRating");
   });
   it("publishes the verified Erdbergstraße address", () => {
