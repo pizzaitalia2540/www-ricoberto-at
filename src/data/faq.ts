@@ -4,7 +4,7 @@ import { money } from "@/lib/order";
 
 export type FaqItem = { question: string; answer: string };
 
-/** Groups days with identical hours, e.g. "Montag, Dienstag 12:00 – 23:30 Uhr; Freitag 14:00 – 23:30 Uhr". */
+/** Groups days with identical hours, e.g. "Montag, Dienstag 10:30 – 23:00 Uhr; Freitag 14:00 – 23:00 Uhr". */
 export function formatOpeningHours(rows = OPENING_HOURS): string {
   const groups = new Map<string, string[]>();
   for (const { day, hours } of rows) groups.set(hours, [...(groups.get(hours) ?? []), day]);

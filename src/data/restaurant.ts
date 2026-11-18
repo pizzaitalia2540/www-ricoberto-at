@@ -15,13 +15,13 @@ export const RESTAURANT = {
 };
 
 export const OPENING_HOURS: { day: string; hours: string }[] = [
-  { day: "Montag", hours: "12:00 – 23:30" },
-  { day: "Dienstag", hours: "12:00 – 23:30" },
-  { day: "Mittwoch", hours: "12:00 – 23:30" },
-  { day: "Donnerstag", hours: "12:00 – 23:30" },
-  { day: "Freitag", hours: "14:00 – 23:30" },
-  { day: "Samstag", hours: "12:00 – 23:30" },
-  { day: "Sonntag", hours: "12:00 – 23:30" },
+  { day: "Montag", hours: "10:30 – 23:00" },
+  { day: "Dienstag", hours: "10:30 – 23:00" },
+  { day: "Mittwoch", hours: "10:30 – 23:00" },
+  { day: "Donnerstag", hours: "10:30 – 23:00" },
+  { day: "Freitag", hours: "14:00 – 23:00" },
+  { day: "Samstag", hours: "10:30 – 23:00" },
+  { day: "Sonntag", hours: "10:30 – 23:00" },
 ];
 
 export const REVIEWS = [

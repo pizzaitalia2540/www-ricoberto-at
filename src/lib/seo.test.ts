@@ -62,7 +62,7 @@ describe("Public website SEO", () => {
     expect(restaurantSchema.address.postalCode).toBe("1030");
   });
   it("publishes the verified Friday hours", () => {
-    expect(restaurantSchema.openingHoursSpecification.find((day) => day.dayOfWeek.endsWith("Friday"))).toMatchObject({ opens: "14:00", closes: "23:30" });
+    expect(restaurantSchema.openingHoursSpecification.find((day) => day.dayOfWeek.endsWith("Friday"))).toMatchObject({ opens: "14:00", closes: "23:00" });
   });
   it("publishes Margherita at its menu price", () => {
     const pizza = menuSchema.hasMenuSection.find((section) => section.name === "Pizza");

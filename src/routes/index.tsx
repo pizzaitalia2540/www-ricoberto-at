@@ -7,8 +7,8 @@ import { Contact, Gallery, Reviews } from "@/components/site/Sections";
 import { RESTAURANT } from "@/data/restaurant";
 import { pageHead, SITE_URL } from "@/lib/seo";
 
-const TITLE = "Ricoberto 3.0: Neapolitanische Pizza & Pasta, Wien 1030";
-const DESC = `Ricoberto 3.0, ${RESTAURANT.street}, ${RESTAURANT.city}: neapolitanische Pizza, hausgemachte Pasta & Antipasti. ${RESTAURANT.rating}★ bei ${RESTAURANT.reviewCount} Google-Bewertungen. Täglich geöffnet.`;
+const TITLE = "Neapolitanische Pizza & frische Pasta: Ricoberto 3.0 Wien 1030";
+const DESC = `Ricoberto 3.0, ${RESTAURANT.street}, ${RESTAURANT.city}: neapolitanische Pizza, hausgemachte Pasta & frische Salate. ${RESTAURANT.rating}★ bei ${RESTAURANT.reviewCount} Google-Bewertungen. Täglich geöffnet.`;
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
