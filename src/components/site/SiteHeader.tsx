@@ -8,12 +8,12 @@ import { money } from "@/lib/order";
 import { cn } from "@/lib/utils";
 import { useCart } from "./cart-context";
 
-const NAV = [
+export const NAV = [
   { to: "/speisekarte", hash: "", label: "Speisekarte" },
   { to: "/lieferung", hash: "", label: "Lieferung" },
-  { to: "/", hash: "ueber-uns", label: "Über uns" },
-  { to: "/", hash: "galerie", label: "Galerie" },
-  { to: "/", hash: "kontakt", label: "Kontakt" },
+  { to: "/ueber-uns", hash: "", label: "Über uns" },
+  { to: "/galerie", hash: "", label: "Galerie" },
+  { to: "/kontakt", hash: "", label: "Kontakt" },
   { to: "/en", hash: "", label: "EN" },
 ] as const;
 

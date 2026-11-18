@@ -22,5 +22,6 @@
 - [ ] Search Console connection / Business Profile consistency / Google indexing verification — needs account access
 - [ ] GA4 — needs tracking ID and consent requirements
 - [x] Geo coordinates (OSM-verified)
+- [x] Über uns, Galerie and Kontakt are their own pages (/ueber-uns, /galerie, /kontakt) — no # in the address; sitemap lists 8 pages
 - [ ] Genuine restaurant share photos — needs verified source; generated photos excluded from JSON-LD and image tags omitted
 - [ ] Publish latest changes — live site retains previous version until publishing

@@ -11,10 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EnRouteImport } from './routes/en'
+import { Route as GalerieRouteImport } from './routes/galerie'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as LieferungRouteImport } from './routes/lieferung'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SpeisekarteRouteImport } from './routes/speisekarte'
+import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -26,9 +29,19 @@ const EnRoute = EnRouteImport.update({
   path: '/en',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalerieRoute = GalerieRouteImport.update({
+  id: '/galerie',
+  path: '/galerie',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LieferungRoute = LieferungRouteImport.update({
@@ -46,56 +59,92 @@ const SpeisekarteRoute = SpeisekarteRouteImport.update({
   path: '/speisekarte',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UeberUnsRoute = UeberUnsRouteImport.update({
+  id: '/ueber-uns',
+  path: '/ueber-uns',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/en': typeof EnRoute
+  '/galerie': typeof GalerieRoute
   '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
   '/lieferung': typeof LieferungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speisekarte': typeof SpeisekarteRoute
+  '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/en': typeof EnRoute
+  '/galerie': typeof GalerieRoute
   '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
   '/lieferung': typeof LieferungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speisekarte': typeof SpeisekarteRoute
+  '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/en': typeof EnRoute
+  '/galerie': typeof GalerieRoute
   '/impressum': typeof ImpressumRoute
+  '/kontakt': typeof KontaktRoute
   '/lieferung': typeof LieferungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speisekarte': typeof SpeisekarteRoute
+  '/ueber-uns': typeof UeberUnsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/en' | '/impressum' | '/lieferung' | '/sitemap.xml' | '/speisekarte'
+    | '/'
+    | '/en'
+    | '/galerie'
+    | '/impressum'
+    | '/kontakt'
+    | '/lieferung'
+    | '/sitemap.xml'
+    | '/speisekarte'
+    | '/ueber-uns'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/en' | '/impressum' | '/lieferung' | '/sitemap.xml' | '/speisekarte'
+    | '/'
+    | '/en'
+    | '/galerie'
+    | '/impressum'
+    | '/kontakt'
+    | '/lieferung'
+    | '/sitemap.xml'
+    | '/speisekarte'
+    | '/ueber-uns'
   id:
     | '__root__'
     | '/'
     | '/en'
+    | '/galerie'
     | '/impressum'
+    | '/kontakt'
     | '/lieferung'
     | '/sitemap.xml'
     | '/speisekarte'
+    | '/ueber-uns'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EnRoute: typeof EnRoute
+  GalerieRoute: typeof GalerieRoute
   ImpressumRoute: typeof ImpressumRoute
+  KontaktRoute: typeof KontaktRoute
   LieferungRoute: typeof LieferungRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpeisekarteRoute: typeof SpeisekarteRoute
+  UeberUnsRoute: typeof UeberUnsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -114,11 +163,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/galerie': {
+      id: '/galerie'
+      path: '/galerie'
+      fullPath: '/galerie'
+      preLoaderRoute: typeof GalerieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/impressum': {
       id: '/impressum'
       path: '/impressum'
       fullPath: '/impressum'
       preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lieferung': {
@@ -142,16 +205,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SpeisekarteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ueber-uns': {
+      id: '/ueber-uns'
+      path: '/ueber-uns'
+      fullPath: '/ueber-uns'
+      preLoaderRoute: typeof UeberUnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EnRoute: EnRoute,
+  GalerieRoute: GalerieRoute,
   ImpressumRoute: ImpressumRoute,
+  KontaktRoute: KontaktRoute,
   LieferungRoute: LieferungRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpeisekarteRoute: SpeisekarteRoute,
+  UeberUnsRoute: UeberUnsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
